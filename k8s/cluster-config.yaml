@@ -1,0 +1,15 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+
+# Define the nodes in the cluster
+nodes:
+  - role: control-plane  # Control plane node
+    extraPortMappings:   # Map ports from the host to the container
+      - containerPort: 6443  # Kubernetes API server port
+        hostPort: 6443       # Host port (can be the same or different)
+        protocol: TCP
+  - role: worker         # Worker node
+    extraPortMappings:
+      - containerPort: 30126  # Map port 8080 from container to host
+        hostPort: 8080       # Host port
+        protocol: TCP

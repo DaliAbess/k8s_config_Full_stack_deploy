@@ -1,0 +1,24 @@
+##########################################################_____________docker images
+cd  frontend/
+docker build -t daliabess7/frontend:3.0 .
+docker push daliabess7/frontend:3.0 
+cd backend/ 
+docker build -t daliabess7/backend:3.0 .
+docker push daliabess7/backend:3.0 
+##########################################################_____________K8S
+kind create cluster --config cluster-config.yaml -n k8s-cluster
+
+docker exec -it k8s-cluster-control-plane bash
+
+apt update && apt install git
+
+git clone https://github.com/DaliAbess/k8S_conf.git
+
+kubectl apply -f k8S_conf/
+
+kubectl get all -o wide 
+
+
+ssh -R 80:10.96.60.118:5000  serveo.net    (for nodejs backend service + add the url to react js as api url )
+npm install -g localtunnel  && lt --port 8080  (expose react app port to the browser )
+
