@@ -22,3 +22,19 @@ kubectl get all -o wide
 ssh -R 80:10.96.60.118:5000  serveo.net    (for nodejs backend service + add the url to react js as api url )
 npm install -g localtunnel  && lt --port 8080  (expose react app port to the browser )
 
+###################################eks aws 
+Copy and paste the following into ~/.aws/credentials
+[default]
+aws_access_key_id=
+aws_secret_access_key=
+aws_session_token=
+
+install eksctl
+
+##install aws cli 
+pip install awscli
+############connect to aws eks cluster
+aws eks update-kubeconfig  --region us-east-1 --name first 
+#######################
+
+kubectl get nodes
