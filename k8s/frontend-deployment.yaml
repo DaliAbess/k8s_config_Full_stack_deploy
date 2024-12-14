@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: daliabess7/frontend:2.0
+        image: daliabess7/frontend:4.0
         ports:
         - containerPort: 80
